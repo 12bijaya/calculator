@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let operation = '+';
+
+        function selectOperations(op) {
+        operation = op;
+        }
+
+        function calculator(){
+            let num1 = Number(document.getElementById('a').value)
+            let num2 = Number(document.getElementById('b').value)
+            let result 
+            if(isNaN(num1) || isNaN(num2)){
+                alert("Enter the valid number")
+                return;
+            }
+            switch (operation){
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    if(num2==0){
+                        alert("Undefined put second value not equal to zero")
+                        break
+                    }
+                    result = num1/num2;
+                    break;
+                case "%":
+                    result = num1 % num2;
+                    break;
+                default:
+                    result = "Invalid operation";
+            }
+            document.getElementById('result').value = result
+        }
+    </script>
+    <style>
+        body {
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cal {
+            margin-top: 5%;
+            background-color: rgb(13, 182, 182);
+            border-radius: 2%;
+            flex-direction: left;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        #buttons {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        #bun {
+            padding-left: 5%;
+            padding-right: 5%;            
+        }
+        #submit{
+            padding: 5%;
+            padding-left: 37%;
+            padding-right: 35%;
+            border: solid black;
+            border-radius: 9%;
+        }
+        #submit:hover {
+            background-color: rgb(22, 43, 233);
+            color: aqua;
+            padding: 4%;
+            padding-left: 36%;
+            padding-right: 34%;
+            border: solid green;
+            border-radius: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="cal">
+        <h1>Calculator</h1>
+        <label for="text">Enter First number</label><br>
+        <input type="number" id="a"><br><br>
+        <div id="buttons">
+            <button onclick="selectOperations('+')" id="bun" >+</button>
+            <button onclick="selectOperations('-')" id="bun">-</button>
+            <button onclick="selectOperations('*')" id="bun">*</button>
+            <button onclick="selectOperations('/')" id="bun">/</button>
+            <button onclick="selectOperations('%')" id="bun">%</button>
+        </div>
+        <br>
+        <label for="text">Enter Second number</label><br>
+        <input type="number"id="b"><br><br>
+        <input type="button" value="submit" id="submit" onclick="calculator()">
+        <br><br>
+        <label for="text">Results</label><br>
+        <input type="number" id="result"><br><br>       
+    </div>
+    <br>
+</body>
+</html>
